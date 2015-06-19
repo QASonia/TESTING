@@ -1,0 +1,93 @@
+*** Settings ***
+Documentation     Assertion resource contains all valid & invalid verification of tests . 30th Dec 2014
+Library           HttpLibrary.HTTP
+Library           OperatingSystem
+Library           String
+Library           BuiltIn
+Library           Selenium2Library
+Resource          ../pageresource/LoginDialog.txt
+Resource          ../pageresource/HomePage.txt
+Resource          ../pageresource/KlarnaFrame.txt
+
+*** Variables ***
+${USERNAME_INPUT_ID}    username
+${PASSWORD_INPUT_ID}    password
+${WELCOMEPAGE_TITLE}    Welcome to Homepage
+${LOGIN_FAILURE_ALERT_MESSAGE_CSS}    css=.alert.alert-warning.ng-binding
+${REGISTRATION_FAILURE_ALERT_MESSAGE_CSS}    css=.alert.alert-warning.ng-binding
+${LIST_OF_TABLE_ELEMENTS_CSS}    css=.table-responsive.ng-scope
+${K_PAYMENT_ACKNOWLEDGEMNT_MESSAGE}    xpath=(.//*[@id='page']/div[1]/div[1]/div/h2)
+${K_PAYMENT_ACKNOWLDEGEMENT_CURRENCY}    xpath=(.//*[@id='page']/div[1]/div[2]/div[1]/div[1]/div[2]/p)
+${KRONER_CURRENCY}    kr
+${EURO_CURRENCY}    €
+
+*** Keywords ***
+verifyLogin
+    Wait Until Page Contains Element    ${LOGOUT_DIALOG_LINK_XPATH}    3
+    Element Should Be Visible    ${LOGOUT_DIALOG_LINK_XPATH}
+
+verifyLoginFailure
+    [Arguments]    ${response_message}
+    ${FailureMsg}    Get Text    ${LOGIN_FAILURE_ALERT_MESSAGE_CSS}
+    log    Alert Response From UI: ${FailureMsg}
+    log    Expected Response From UI: ${response_message}
+    run keyword and continue on failure    Should Be Equal As Strings    ${FailureMsg}    ${response_message}
+
+verifyRegistrationFailure
+    [Arguments]    ${response_message}
+    ${FailureMsg}    Get Text    ${REGISTRATION_FAILURE_ALERT_MESSAGE_CSS}
+    log    Alert Response From UI: ${FailureMsg}
+    log    Expected Response From UI: ${response_message}
+    run keyword and continue on failure    Should Be Equal As Strings    ${FailureMsg}    ${response_message}
+
+verifyKCO_SWEDEN
+    [Arguments]    ${expected_paymentSuccess_message}
+    ${CustomerShoppedForSum}    Get Text    css=.tws-cart--sum-currency.ng-scope
+    ${KAmtPaid} =    Catenate    SEPARATOR=    ${KRONER_CURRENCY}    ${CustomerShoppedForSum}
+    Select Frame    klarna-checkout-iframe
+    Wait Until Element Is Visible    ${K_PAYMENT_ACKNOWLEDGEMNT_MESSAGE}
+    ${PaymentSuccessfulMsg}    Get Text    ${K_PAYMENT_ACKNOWLEDGEMNT_MESSAGE}
+    log    Alert Response From UI: ${PaymentSuccessfulMsg}
+    Should Be Equal As Strings    ${PaymentSuccessfulMsg}    ${expected_paymentSuccess_message}
+    ${amountPaidByCustomer}    Get Text    ${K_PAYMENT_ACKNOWLDEGEMENT_CURRENCY}
+    Should Be Equal As Strings    ${KAmtPaid}    ${amountPaidByCustomer}
+
+verifyKCO_FINLAND
+    [Arguments]    ${expected_paymentSuccess_message}
+    ${CustomerShoppedForSum}    Get Text    css=.tws-cart--sum-currency.ng-scope
+    ${KAmtPaid} =    Catenate    SEPARATOR=    ${CustomerShoppedForSum}    ${EURO_CURRENCY}
+    Select Frame    klarna-checkout-iframe
+    Wait Until Element Is Visible    ${K_PAYMENT_ACKNOWLEDGEMNT_MESSAGE}
+    ${PaymentSuccessfulMsg}    Get Text    ${K_PAYMENT_ACKNOWLEDGEMNT_MESSAGE}
+    log    Alert Response From UI: ${PaymentSuccessfulMsg}
+    Should Be Equal As Strings    ${PaymentSuccessfulMsg}    ${expected_paymentSuccess_message}
+    ${amountPaidByCustomer}    Get Text    ${K_PAYMENT_ACKNOWLDEGEMENT_CURRENCY}
+    Should Be Equal As Strings    ${KAmtPaid}    ${amountPaidByCustomer}
+
+verifyKCO_NORWAY
+    [Arguments]    ${expected_paymentSuccess_message}
+    ${CustomerShoppedForSum}    Get Text    css=.tws-cart--sum-currency.ng-scope
+    ${KAmtPaid} =    Catenate    SEPARATOR=    ${CustomerShoppedForSum}    ${KRONER_CURRENCY}
+    Select Frame    klarna-checkout-iframe
+    Wait Until Element Is Visible    ${K_PAYMENT_ACKNOWLEDGEMNT_MESSAGE}
+    ${PaymentSuccessfulMsg}    Get Text    ${K_PAYMENT_ACKNOWLEDGEMNT_MESSAGE}
+    log    Alert Response From UI: ${PaymentSuccessfulMsg}
+    Should Be Equal As Strings    ${PaymentSuccessfulMsg}    ${expected_paymentSuccess_message}
+    ${amountPaidByCustomer}    Get Text    ${K_PAYMENT_ACKNOWLDEGEMENT_CURRENCY}
+    Should Be Equal As Strings    ${KAmtPaid}    ${amountPaidByCustomer}
+
+verifyNewItemCreated
+    [Arguments]    ${new_item}
+    Wait Until Page Contains Element    ${LIST_OF_TABLE_ELEMENTS_CSS}    3
+    ${availableItems}    Get Text    ${LIST_OF_TABLE_ELEMENTS_CSS}
+    log    ${availableItems}
+    ${newlyCreatedCondition}    Get Lines Containing String    ${availableItems}    ${new_item}
+    Should Contain    ${availableItems}    ${new_item}
+
+verifyNewUserCreated
+    [Arguments]    ${new_name}    ${new_username}
+    Wait Until Page Contains Element    ${LIST_OF_TABLE_ELEMENTS_CSS}    3
+    ${availableUsers}    Get Text    ${LIST_OF_TABLE_ELEMENTS_CSS}
+    log    ${availableUsers}
+    ${newlyCreatedPolicy}    Get Lines Containing String    ${availableUsers}    ${new_username}
+    Should Contain    ${availableUsers}    ${new_name}    ${new_username}

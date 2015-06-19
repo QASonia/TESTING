@@ -1,0 +1,55 @@
+*** Settings ***
+Documentation     'ArticlePage' resource file contains list of keywords and variables available from the page. 05th May 2015
+Library           HttpLibrary.HTTP
+Library           OperatingSystem
+Library           String
+Library           BuiltIn
+Library           Selenium2Library
+
+*** Variables ***
+${INCREASE_ITEM_QUANTITY_BUTTON_ID}    xpath=(//button[@ng-click='inc()'])
+${DECREASE_ITEM_QUANTITY_BUTTON_ID}    xpath=(//button[@ng-click='dec()'])
+${PRODUCT_SIZE_INPUT_LIST}    name=1748434
+${PRODUCT_COLOR_INPUT_LIST}    name=1748435
+${ADDTOCART}		xpath=(//button[@ng-click='buy(articleChoices)'])
+${WRITE_TEXT_INPUT}	xpath=(.//*[@ng-model-options='form.ngModelOptions'])
+*** Keywords ***
+selectProductSize
+    [Arguments]    ${productSize}
+    Select From List By Label    ${PRODUCT_SIZE_INPUT_LIST}    ${productSize}
+    log    ${productSize}
+
+selectProductColor
+    [Arguments]    ${productColor}
+    Select From List By Label    ${PRODUCT_COLOR_INPUT_LIST}    ${productColor}
+    log    ${productColor}
+
+IncreaseQuantity
+	Wait Until Element Is Visible	${INCREASE_ITEM_QUANTITY_BUTTON_ID}		2
+    Click Element    ${INCREASE_ITEM_QUANTITY_BUTTON_ID}    #increase item quantity
+
+DecreaseQuantity
+	Wait Until Element Is Visible	${DECREASE_ITEM_QUANTITY_BUTTON_ID}		2
+    Click Element    ${DECREASE_ITEM_QUANTITY_BUTTON_ID}    #decrease item quantity
+
+AddToCart
+	Wait Until Element Is Visible	${DECREASE_ITEM_QUANTITY_BUTTON_ID}		2
+    Click Element    ${ADDTOCART}    #Addto cart
+
+Proceed To Checkout
+    Wait Until Element Is Visible    xpath=(//a[@class='btn btn-primary ng-binding'])    3
+    Click Element    xpath=(//a[@class='btn btn-primary ng-binding'])    #Proceed to checkout
+
+GotoArticle
+    [Arguments]    ${articleName}
+    Wait Until Element Is Visible    //h5/a[contains(text(),'${articleName}')]    2
+    Click Element    //h5/a[contains(text(),'${articleName}')]    #View Article //div/div[4]/div/div[2]/div
+
+SelectByArticlenr
+    [Arguments]    ${subArticleNumber}
+    Wait Until Element Is Visible    //div[3]/div[3]/div    2
+    Click Element    //div[@class='variant-article-nr ng-binding ng-scope' and .//text()='kv_56812']    #sub Article list
+
+Write A Text
+    [Arguments]    ${writeText}
+    Input Text    ${WRITE_TEXT_INPUT}    ${writeText}    #Customer choice text

@@ -1,0 +1,99 @@
+*** Settings ***
+Documentation     'Cashpage' resource file contains list of keywords and variables available from the page. 05th May 2015
+Library           HttpLibrary.HTTP
+Library           OperatingSystem
+Library           String
+Library           BuiltIn
+Library           Selenium2Library
+Resource          ../setup/GenericTestAficionado.txt
+Resource          ../setup/Assertions.txt
+
+*** Variables ***
+${K_EMAIL_ID}     css=.cui__editor--text.fieldset--challenge__editor--email
+${K_FIRSTNAME_INPUT_ID}    css=.cui__editor--text.fieldset--billing-address__editor--given-name
+${K_LASTNAME_INPUT_ID}    css=.cui__editor--text.fieldset--billing-address__editor--family-name
+${K_ADDRESS_INPUT_ID}    css=.cui__editor--text.fieldset--billing-address__editor--street-address
+${K_POSTCODE_INPUT_ID}    css=.cui__editor--text.fieldset--challenge__editor--postal-code
+${K_CAREOFNAME_INPUT_ID}    .cui__editor--text.fieldset--billing-address__editor--care-of
+${K_CITY_INPUT_ID}    css=.cui__editor--text.fieldset--billing-address__editor--city
+${K_PERSONAL_NUMBER_INPUT_ID}    css=.cui__editor--text.fieldset--challenge__editor--national-identification-number
+${K_PHONE_NUMBER_INPUT_ID}    css=.cui__editor--text.fieldset--billing-address__editor--phone
+${K_PLACE_ORDER_BUTTON_CSS}    xpath=(.//*[@id='buy-button'])
+${K_CONTINUE_BUTTON_CSS}    css=button.cui__highlighted-button.fieldset--challenge__continue-button
+${K_CONTINUE_HIGHLIGHTED_BUTTON_CSS}    css=.cui__highlighted-button.fieldset--billing-address__continue-button
+${K_CONTINUE_NON_HIGHLIGHTED_BUTTON_CSS}    css=.cui__non-highlighted-button.button.continue
+${K_REMEMBER_ME_CHECKBOX_CSS}    css=css=.cui__checkbox.remember-me-toggle__checkbox
+${PAY_BUTTON_XPATH}    xpath=(//button[@ng-click='pay(checkoutForm)'])
+
+
+*** Keywords ***
+setKEmail
+    [Arguments]    ${kEmail}
+    Wait Until Element Is Visible    ${K_EMAIL_ID}    1
+    Input Text    ${K_EMAIL_ID}    ${kEmail}
+
+setKFirstName
+    [Arguments]    ${kFirstName}
+    Wait Until Element Is Visible    ${K_FIRSTNAME_INPUT_ID}    2
+    Input Text    ${K_FIRSTNAME_INPUT_ID}    ${kFirstName}
+
+setKLastName
+    [Arguments]    ${kLastName}
+    Wait Until Element Is Visible    ${K_LASTNAME_INPUT_ID}    1
+    Input Text    ${K_LASTNAME_INPUT_ID}    ${kLastName}
+
+setKAddress
+    [Arguments]    ${kAddress}
+    Wait Until Element Is Visible    ${K_ADDRESS_INPUT_ID}    1
+    Input Text    ${K_ADDRESS_INPUT_ID}    ${kAddress}
+
+setKPostCode
+    [Arguments]    ${kPostCode}
+    Wait Until Element Is Visible    ${K_POSTCODE_INPUT_ID}    1
+    Input Text    ${K_POSTCODE_INPUT_ID}    ${kPostCode}
+
+setKCareOfName
+    [Arguments]    ${kCareOfName}
+    Click Element    xpath=(.//*[@id='page']/div[1]/div[1]/form/fieldset[2]/div[5]/div[3]/a/span)
+    Wait Until Element Is Visible    ${K_CAREOFNAME_INPUT_ID}    1
+    Input Text    ${K_CAREOFNAME_INPUT_ID}    ${kCareOfName}
+
+setKCity
+    [Arguments]    ${kcity}
+    Wait Until Element Is Visible    ${K_CITY_INPUT_ID}    1
+    Input Text    ${K_CITY_INPUT_ID}    ${kcity}
+
+setKPersonalNumber
+    [Arguments]    ${kPersonalNumber}
+    Wait Until Element Is Visible    ${K_PERSONAL_NUMBER_INPUT_ID}    2
+    Input Text    ${K_PERSONAL_NUMBER_INPUT_ID}    ${kPersonalNumber}
+
+setKPhoneNumber
+    [Arguments]    ${kPhoneNumber}
+    Wait Until Element Is Visible    ${K_PHONE_NUMBER_INPUT_ID}    1
+    Input Text    ${K_PHONE_NUMBER_INPUT_ID}    ${kPhoneNumber}
+
+KPlaceOrder
+    Wait Until Element Is Visible    ${K_PLACE_ORDER_BUTTON_CSS}    3
+    Click Element    ${K_PLACE_ORDER_BUTTON_CSS}
+    #Set Selenium Implicit Wait    10 seconds
+    Sleep    9s
+    log    Order Placed
+
+clickKContinue
+    Wait Until Element Is Visible    ${K_CONTINUE_BUTTON_CSS}    1
+    Click Element    ${K_CONTINUE_BUTTON_CSS}
+
+clickKContinueOnBilling
+    Wait Until Element Is Visible    ${K_CONTINUE_HIGHLIGHTED_BUTTON_CSS}    1
+    Click Element    ${K_CONTINUE_HIGHLIGHTED_BUTTON_CSS}
+    Sleep    3s
+
+KlarnaRememberMe
+    Click Element    ${K_REMEMBER_ME_CHECKBOX_CSS}
+
+noPersonalNumber
+    Click Element    xpath=(.//*[@id='page']/div[1]/div[1]/form/fieldset[1]/a[2]/span)
+    Wait Until Element Is Visible    ${K_CONTINUE_NON_HIGHLIGHTED_BUTTON_CSS}    1
+    Click Element    ${K_CONTINUE_NON_HIGHLIGHTED_BUTTON_CSS}
+    Set Selenium Implicit Wait    5s

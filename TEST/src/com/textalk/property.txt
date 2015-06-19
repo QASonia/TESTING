@@ -1,0 +1,5 @@
+*** Variables ***
+${BROWSER}        chrome
+${URL}            http://prassana4:x51rXBGQM7ZMC3Xm5S7p@hub.browserstack.com/wd/hub
+${PATH_TO_TESTRESULT}    ...\DiversityWebClientTests\results
+${TIMEOUT}        0

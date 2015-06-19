@@ -1,0 +1,10 @@
+testCaseName	tagNumber	userName	password	responseMessage	newUserName	eMail	newPassword	retypeNewPassword	resetCode	articleName	subArticleNumber	productSize	productColor	menuItemName	menSectionMenuItem	womenSectionMenuItem	news	demoFavArticleName	promotionItemArticleName	itemName	deliveryMethod	paymentMethod	firstName	lastName	address	address2	postCode	townName	countryName	customer	emailID	phoneNight	phoneDay	titleName	discountCode	kEmail	kPostCode	kFirstName	kLastName	kAddress	kCareOfName	kcity	kPersonalNumber	kPhoneNumber
+Validate login_Using browser back button	C403	twsUser1	12345																																									
+Check LoginPage Retains	C405	twsUser1	12345																																									
+Valid_Registration	C406				C406account	C406account@textalk.se	12345	12345																																				
+Invalid_Registration	C407			The passwords do not match.	C407account	rpravink22@textalk.se	123456	12345																																				
+Forgot Password Link Check	C414	twsUser1		Could not reset password. Please check the spelling of your username and code.			123456	123456	QWERTY																																			
+KCO Payment - Sweden	C416s											M	Red						Raina		DHL	Klarna Checkout							Sweden							checkout-se@testdrive.klarna.com	12345						410321-9202	
+KCO Payment - Finland	C416f											XS	Yellow						Raina		Standard delivery	Klarna Checkout							Finland							checkout-fi@testdrive.klarna.com	28100			Kiv‰‰rikatu 10		Pori	190122-829F	040-1234567
+KCO Payment - Norway	C416n											L	Blue						Raina		DHL	Klarna Checkout							Norway							chec‰kout-no@testdrive.klarna.com	56325	Testperson-no	Approved	SÊffleberggate 56		Oslo	1121579533	40 123 456
+KCO Payment - Germany	C416g											XS	Red						Raina		Standard delivery	Klarna Checkout							Germany							checkout-de@testdrive.klarna.com	41460	Testperson-de	Approved	Hellersbergstraﬂe	Frankfurt	Neuss		015-22113356

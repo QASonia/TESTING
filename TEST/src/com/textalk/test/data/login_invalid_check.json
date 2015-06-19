@@ -1,0 +1,9 @@
+[
+{"data_C402":{"tagNo":"C402"}, "testCaseName":"Invalid_Login to System", "username":"" , "password":"", "response_message": "Could not log in. Please check the spelling of your username and password."},
+{"data_C402":{"tagNo":"C402"}, "testCaseName":"Invalid_Login to System", "username":"twsUser1Sæffleberggate 56", "password":"", "response_message": "Could not log in. Please check the spelling of your username and password."},
+{"data_C402":{"tagNo":"C402"}, "testCaseName":"Invalid_Login to System", "username":"twsUser1" , "password":"gsdgdfgfdg", "response_message": "Could not log in. Please check the spelling of your username and password."},
+{"data_C402":{"tagNo":"C402"}, "testCaseName":"Invalid_Login to System", "username":"tws  User1" , "password":"", "response_message": "Could not log in. Please check the spelling of your username and password."},
+{"data_C402":{"tagNo":"C402"}, "testCaseName":"Invalid_Login to System", "username":"tw.&user/1", "password":"*&/df", "response_message": "Could not log in. Please check the spelling of your username and password."},
+{"data_C402":{"tagNo":"C402"}, "testCaseName":"Invalid_Login to System", "username":"" , "password":"", "response_message": "Could not log in. Please check the spelling of your username and password."},
+{"data_C402":{"tagNo":"C402"}, "testCaseName":"Invalid_Login to System", "username":"twsUser1", "password":"12FKS", "response_message": "Could not log in. Please check the spelling of your username and password."}
+]

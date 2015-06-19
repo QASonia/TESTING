@@ -1,0 +1,12 @@
+﻿testCaseName,tagNumber,userName,password,responseMessage,newUserName,eMail,newPassword,retypeNewPassword,resetCode,articleName,subArticleNumber,productSize,productColor,menuItemName,menSectionMenuItem,womenSectionMenuItem,news,demoFavArticleName,promotionItemArticleName,itemName,deliveryMethod,paymentMethod,firstName,lastName,address,address2,postCode,townName,countryName,customer,emailID,phoneNight,phoneDay,titleName,discountCode,kEmail,kPostCode,kFirstName,kLastName,kAddress,kCareOfName,kcity,kPersonalNumber,kPhoneNumber
+Validate login_Using browser back button,C403,twsUser1,12345,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Check LoginPage Retains,C405,twsUser1,12345,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Valid_Registration,C406,,,,C406account,C406account@textalk.se,12345,12345,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Invalid_Registration,C407,,,The passwords do not match.,C407account,rpravink22@textalk.se,123456,12345,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Forgot Password Link Check,C414,twsUser1,,Could not reset password. Please check the spelling of your username and code.,,,123456,123456,QWERTY,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Approved KCO-SWEDEN,C416as,,,Thank you! Your order is on its way.,,,,,,,,M,Red,,,,,,Raina,,DHL,Klarna Checkout,,,,,,,Sweden,,,,,,,youremail@email.com,12345,Testperson-se,Approved,,,,410321-9202,
+Denied KCO-SWEDEN,C416ds,,,Thank you! Your order is on its way.,,,,,,,,M,Yellow,,,,,,Raina,,Standard delivery,Klarna Checkout,,,,,,,Sweden,,,,,,,youremail@email.com,12345,Testperson-se,Denied,Stårgatan 1,,Ankeborg,411028-8083,076-5260000
+Approved KCO-FINLAND,C416af,,,Kiitos ostoksestasi!,,,,,,,,XS,Yellow,,,,,,Raina,,Standard delivery,Klarna Checkout,,,,,,,Finland,,,,,,,youremail@email.com,28100,Testperson-fi,Approved,Kivärikatu 10,,Pori,190122-829F,040-1234567
+Denied KCO-FINLAND,C416df,,,Kiitos ostoksestasi!,,,,,,,,L,Blue,,,,,,Raina,,DHL,Klarna Checkout,,,,,,,Finland,,,,,,,youremail@email.com,28100,Testperson-fi,Denied,Kivärikatu 10,,Pori,112157-9533,40 123 456
+Approved KCO-NORWAY,C416an,,,Takk for ditt kjøp,,,,,,,,XS,Red,,,,,,Raina,,Standard delivery,Klarna Checkout,,,,,,,Norway,,,,,,,youremail@email.com,563,Testperson-no,Approved,Sæffleberggate 56,,Oslo,0112157-9533,040-123 456
+Denied KCO-NORWAY,C416dn,,,Takk for ditt kjøp,,,,,,,,L,Red,,,,,,Raina,,DHL,Klarna Checkout,,,,,,,Norway,,,,,,,youremail@email.com,563,Testperson-no,Denied,Sæffleberggate 56,xxx,Oslo,0112159-8422,040-123 456

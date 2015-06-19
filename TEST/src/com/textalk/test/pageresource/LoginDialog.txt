@@ -1,0 +1,107 @@
+*** Settings ***
+Documentation     Login validation suite. 4th Dec 2014
+Library           HttpLibrary.HTTP
+Library           OperatingSystem
+Library           String
+Library           BuiltIn
+Library           Selenium2Library
+Resource          ../pageresource/HomePage.txt
+
+*** Variables ***
+${USERNAME_INPUT_ID}    xpath=(.//*[@ng-model='model.username'])
+${PASSWORD_INPUT_ID}    xpath=(.//*[@ng-model='model.password'])
+${LOGIN_BUTTON_XPATH}    xpath=(//button[@ng-click='login()'])
+${LOGOUT_BUTTON_ID}    xpath=(//button[@ng-click='logout()'])
+${CREATE_AN_ACCOUNT_BUTTON_XPATH}    xpath=(//button[@ng-click='register()'])
+${FORGOT_YOUR_PASSWORD_LINK}    xpath=(//a[@ng-click='forgot()'])
+${EMAIL_INPUT_ID}    xpath=(.//*[@ng-model='model.email'])
+${CREATE_PASSWORD_INPUT_ID}    xpath=(.//*[@ng-model='model.newpassword'])
+${CREATE_RETYPE_PASSWORD_INPUT_ID}    xpath=(.//*[@ng-model='model.newpassword2'])
+${CREATE_ACCOUNT_BUTTON_ID}    xpath=(//button[@type='submit'])
+${ACTIVATE_ACCOUNT_BUTTON_ID}    xpath=(//button[@type='submit'])
+${ACTIVATION_CODE_INPUT_ID}    xpath=(.//*[@ng-model='model.code'])
+${CANCEL_GOTO_REGISTRATIONFORM_BUTTON_ID}    xpath=(//button[@ng-click='register()'])
+${CANCEL_GOTO_LOGINFORM_BUTTON_ID}    xpath=(//button[@ng-click='cancel()'])
+${SEND_RESET_CODE_BUTTON_ID}    xpath=(//button[@type='submit'])
+${LOGIN_FAILURE_ALERT_MESSAGE_CSS}    css=.alert.alert-warning.ng-binding
+${CLOSE_LOGIN_DIALOG_BUTTON_ID}    css=.close
+
+*** Keywords ***
+setLoginUsername
+    [Arguments]    ${username}
+    Wait Until Element Is Visible	${USERNAME_INPUT_ID}	2
+    Input Text    ${USERNAME_INPUT_ID}    ${username}
+    log    ${username}
+
+setLoginPassword
+    [Arguments]    ${password}
+    Wait Until Element Is Visible	${PASSWORD_INPUT_ID}	2
+    Input Password    ${PASSWORD_INPUT_ID}    ${password}
+    log    ${password}
+
+setEmail
+    [Arguments]    ${email}
+    Wait Until Element Is Visible	${EMAIL_INPUT_ID}	2
+    Input Password    ${EMAIL_INPUT_ID}    ${email}
+    log    ${email}
+
+setNewPassword
+    [Arguments]    ${newPassword}
+    Wait Until Element Is Visible	${CREATE_PASSWORD_INPUT_ID}	2
+    Input Password    ${CREATE_PASSWORD_INPUT_ID}    ${newPassword}
+    log    ${newPassword}
+
+setRetypePassword
+    [Arguments]    ${newPassword2}
+    Wait Until Element Is Visible	${CREATE_RETYPE_PASSWORD_INPUT_ID}	2
+    Input Password    ${CREATE_RETYPE_PASSWORD_INPUT_ID}    ${newPassword2}
+    log    ${newPassword2}
+
+setResetcode
+    [Arguments]    ${activationcode}
+    Wait Until Element Is Visible	${ACTIVATION_CODE_INPUT_ID}	2
+    Input Password    ${ACTIVATION_CODE_INPUT_ID}    ${activationcode}
+    log    ${activationcode}
+
+clickLoginButton
+	Wait Until Element Is Visible	${LOGIN_BUTTON_XPATH}	2
+    Click Button    ${LOGIN_BUTTON_XPATH}
+    Set Selenium Implicit Wait    3
+
+clickRegister
+    Click Button    ${CREATE_AN_ACCOUNT_BUTTON_XPATH}
+    Set Selenium Implicit Wait    .3 seconds
+
+clickCreateAccount
+    Click Button    ${CREATE_ACCOUNT_BUTTON_ID}
+    Set Selenium Implicit Wait    .3 seconds
+
+clickActivateAccount
+    Click Button    ${ACTIVATE_ACCOUNT_BUTTON_ID}
+    Set Selenium Implicit Wait    .3 seconds
+
+clickCancel
+    Click Button    ${CANCEL_GOTO_LOGINFORM_BUTTON_ID}
+    Set Selenium Implicit Wait    .3 seconds
+
+clickBackToRegister
+    Click Button    ${CANCEL_GOTO_REGISTRATIONFORM_BUTTON_ID}
+    Set Selenium Implicit Wait    .3 seconds
+
+clickForgotYourPassword
+    Click Element    ${FORGOT_YOUR_PASSWORD_LINK}
+    Set Selenium Implicit Wait    .3 seconds
+
+clickSendResetCode
+    Click Button    ${SEND_RESET_CODE_BUTTON_ID}
+    Set Selenium Implicit Wait    3
+
+closeLoginDialog
+    Click Button    ${CLOSE_LOGIN_DIALOG_BUTTON_ID}
+    Set Selenium Implicit Wait    2
+
+Login Customer
+    [Arguments]    ${username}    ${password}
+    setLoginUsername    ${username}
+    setLoginPassword    ${password}
+    clickLoginButton

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20150618 18:37:13.920" generator="Robot 2.8.7 (Python 2.7.9 on win32)">
+<suite source="C:\Users\pravin.karthick\Documents\GitHub\Testing\DiversityWebClientTests" id="s1" name="DiversityWebClientTests">
+<suite source="C:\Users\pravin.karthick\Documents\GitHub\Testing\DiversityWebClientTests\src" id="s1-s1" name="Src">
+<suite source="C:\Users\pravin.karthick\Documents\GitHub\Testing\DiversityWebClientTests\src\com" id="s1-s1-s1" name="Com">
+<suite source="C:\Users\pravin.karthick\Documents\GitHub\Testing\DiversityWebClientTests\src\com\textalk" id="s1-s1-s1-s1" name="Textalk">
+<suite source="C:\Users\pravin.karthick\Documents\GitHub\Testing\DiversityWebClientTests\src\com\textalk\test" id="s1-s1-s1-s1-s1" name="Test">
+<suite source="C:\Users\pravin.karthick\Documents\GitHub\Testing\DiversityWebClientTests\src\com\textalk\test\Textalk_webshop.robot" id="s1-s1-s1-s1-s1-s1" name="Textalk webshop">
+<test id="s1-s1-s1-s1-s1-s1-t1" name="LOGIN_Webshop">
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://shop.textalk.se/</arg>
+<arg>chrome</arg>
+<arg></arg>
+<arg>remote_url=${REMOTE_URL}</arg>
+<arg>desired_capabilities=${DESIRED_CAPABILITIES}</arg>
+</arguments>
+<msg timestamp="20150618 18:37:14.092" level="INFO">Opening browser 'chrome' to base url 'http://shop.textalk.se/' through remote server at 'http://prassana4:x51rXBGQM7ZMC3Xm5S7p@hub.browserstack.com/wd/hub'</msg>
+<status status="PASS" endtime="20150618 18:37:23.596" starttime="20150618 18:37:14.092"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150618 18:37:23.599" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150618 18:37:23.599" starttime="20150618 18:37:23.598"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150618 18:37:23.853" starttime="20150618 18:37:23.600"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Click Element">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=.//*[@id='menu-item-9308']/a</arg>
+</arguments>
+<msg timestamp="20150618 18:37:23.853" level="INFO">Clicking element 'xpath=.//*[@id='menu-item-9308']/a'.</msg>
+<status status="PASS" endtime="20150618 18:37:27.829" starttime="20150618 18:37:23.853"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Wait Until Element Is Visible">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>loginform_username</arg>
+<arg>5</arg>
+</arguments>
+<status status="PASS" endtime="20150618 18:37:28.146" starttime="20150618 18:37:27.830"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>loginform_username</arg>
+<arg>krutofv</arg>
+</arguments>
+<msg timestamp="20150618 18:37:28.149" level="INFO">Typing text 'krutofv' into text field 'loginform_username'</msg>
+<status status="PASS" endtime="20150618 18:37:28.649" starttime="20150618 18:37:28.148"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>12345</arg>
+</arguments>
+<msg timestamp="20150618 18:37:28.650" level="INFO">Typing text '12345' into text field 'name=password'</msg>
+<status status="PASS" endtime="20150618 18:37:29.230" starttime="20150618 18:37:28.649"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Click Element">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>css=input.button</arg>
+</arguments>
+<msg timestamp="20150618 18:37:29.233" level="INFO">Clicking element 'css=input.button'.</msg>
+<status status="PASS" endtime="20150618 18:37:31.604" starttime="20150618 18:37:29.232"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Title Should Be">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Textalk Webshop</arg>
+</arguments>
+<msg timestamp="20150618 18:37:31.752" level="INFO">Page title is 'Textalk Webshop'.</msg>
+<status status="PASS" endtime="20150618 18:37:31.752" starttime="20150618 18:37:31.605"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Click Element">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=.//*[@id='logout']</arg>
+</arguments>
+<msg timestamp="20150618 18:37:31.753" level="INFO">Clicking element 'xpath=.//*[@id='logout']'.</msg>
+<status status="PASS" endtime="20150618 18:37:32.798" starttime="20150618 18:37:31.753"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20150618 18:37:32.799" critical="yes" starttime="20150618 18:37:14.092"></status>
+</test>
+<kw type="teardown" name="Selenium2Library.Close Browser">
+<doc>Closes the current browser.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150618 18:37:34.288" starttime="20150618 18:37:32.802"></status>
+</kw>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="PASS" endtime="20150618 18:37:34.288" starttime="20150618 18:37:13.967"></status>
+</suite>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="PASS" endtime="20150618 18:37:34.288" starttime="20150618 18:37:13.967"></status>
+</suite>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="PASS" endtime="20150618 18:37:34.288" starttime="20150618 18:37:13.967"></status>
+</suite>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="PASS" endtime="20150618 18:37:34.288" starttime="20150618 18:37:13.967"></status>
+</suite>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="PASS" endtime="20150618 18:37:34.303" starttime="20150618 18:37:13.967"></status>
+</suite>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="PASS" endtime="20150618 18:37:34.303" starttime="20150618 18:37:13.936"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" pass="1" id="s1" name="DiversityWebClientTests">DiversityWebClientTests</stat>
+<stat fail="0" pass="1" id="s1-s1" name="Src">DiversityWebClientTests.Src</stat>
+<stat fail="0" pass="1" id="s1-s1-s1" name="Com">DiversityWebClientTests.Src.Com</stat>
+<stat fail="0" pass="1" id="s1-s1-s1-s1" name="Textalk">DiversityWebClientTests.Src.Com.Textalk</stat>
+<stat fail="0" pass="1" id="s1-s1-s1-s1-s1" name="Test">DiversityWebClientTests.Src.Com.Textalk.Test</stat>
+<stat fail="0" pass="1" id="s1-s1-s1-s1-s1-s1" name="Textalk webshop">DiversityWebClientTests.Src.Com.Textalk.Test.Textalk webshop</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

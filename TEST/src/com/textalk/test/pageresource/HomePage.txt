@@ -1,0 +1,90 @@
+*** Settings ***
+Documentation     QATest Webshop 'Homepage' resource file contains list of keywords and variables available from the page. 27th Apr 2015
+Library           HttpLibrary.HTTP
+Library           OperatingSystem
+Library           String
+Library           Selenium2Library
+
+*** Variables ***
+${LIST_OF_TABLE_ELEMENTS_CSS}    css=.table-responsive.ng-scope
+${LOGIN_DIALOG_LINK_XPATH}    xpath=(//a[@ng-click='openLoginDialog()'])
+${LOGOUT_DIALOG_LINK_XPATH}    xpath=(//a[@ng-click='openLogoutDialog()'])
+${LOGOUT_BUTTON_XPATH}    xpath=(//button[@ng-click='logout()'])
+${CLOSE_LOGOUT_DIALOG_BUTTON_XPATH}    xpath=(//button[@ng-click='closeDialog()'])
+
+*** Keywords ***
+GotoMenu
+    Wait Until Element Is Visible    ${MENU_PAGE_LINK}    1
+    Mouse Over    ${MENU_PAGE_LINK}
+
+GotoArticle
+    [Arguments]    ${articleName}
+    Click Element    //h5/a[contains(text(),'${articleName}')]    #View Article //div/div[4]/div/div[2]/div
+
+GotoMenuSectionPage
+    [Arguments]    ${menuItemName}
+    GotoMenu
+    Click Element    xpath=(//a[contains(text(),'${menuItemName}')])[2]
+    log    ${menuItemName}
+
+Open Login Dialog
+    Click Element    ${LOGIN_DIALOG_LINK_XPATH}
+
+Open Logout Dialog
+    Click Element    ${LOGOUT_DIALOG_LINK_XPATH}
+    Wait Until Element Is Visible    ${LOGOUT_BUTTON_XPATH}    2
+
+Close Logout Dialog
+    Click Element    ${CLOSE_LOGOUT_DIALOG_BUTTON_XPATH}
+
+Logout Customer
+    Open Logout Dialog
+    Click Element    ${LOGOUT_BUTTON_XPATH}
+
+GotoMenSectionPage
+    [Arguments]    ${menSectionMenuItem}
+    GotoMenu
+    Click Element    xpath=(//a[contains(text(),'${menSectionMenuItem}')])[3]
+    log    ${menSectionMenuItem}
+
+GotoWomenSectionPage
+    [Arguments]    ${womenSectionMenuItem}
+    GotoMenu
+    Click Element    xpath=(//a[contains(text(),'${womenSectionMenuItem}')])[4]
+    log    ${womenSectionMenuItem}
+
+GotoNewsSectionPage
+    [Arguments]    ${news}
+    Click Element    xpath=(//a[contains(text(),'${news}')])[2]
+    log    ${news}
+
+GotoDemoFavourites
+    [Arguments]    ${demoFavArticleName}
+    #Click Element    css=div.tws-logo
+    Wait Until Element Is Visible	xpath=(//h5/a[contains(text(),'${demoFavArticleName}')])	2
+    Click Element    xpath=(//h5/a[contains(text(),'${demoFavArticleName}')])
+    log    ${demoFavArticleName}
+
+GotoPromotionItem
+    [Arguments]    ${promotionItemArticleName}
+    Wait Until Element Is Visible	//a/div/p[contains(text(),'${promotionItemArticleName}')]	2
+    Click Element    //a/div/p[contains(text(),'${promotionItemArticleName}')]
+    log    ${promotionItemArticleName}
+    Set Selenium Implicit Wait    2
+
+GotoCartPage
+    Click Element    xpath=//a/span
+
+ChangeLanguageTo
+    Click Element    //button[@ng-click='dropdowns.currency = !dropdowns.currency']
+    Click Link    ${ENTITLEMENTS_PAGE_LINK}
+
+ChangeCurrencyTo
+    Wait Until Element Is Visible    ${USER_PROFILE_DROPDOWNLIST_CSS}    1
+    Click Element    ${USER_PROFILE_DROPDOWNLISTCSS}
+    Click Link    ${USERPROFILE_PAGE_LINK}
+
+SearchArticle
+    Wait Until Page Contains Element    ${USER_PROFILE_DROPDOWNLIST_CSS}    2
+    Click Element    ${USER_PROFILE_DROPDOWNLIST_CSS}
+    Click Link    ${LOGOUT_LINK}

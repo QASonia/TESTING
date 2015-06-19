@@ -1,0 +1,121 @@
+*** Settings ***
+Documentation     'Cashpage' resource file contains list of keywords and variables available from the page. 05th May 2015
+Library           HttpLibrary.HTTP
+Library           OperatingSystem
+Library           String
+Library           BuiltIn
+Library           Selenium2Library
+Resource          ../setup/GenericTestAficionado.txt
+Resource          ../setup/Assertions.txt
+
+*** Variables ***
+${CLOSE_EDITITEM_DIALOG_BUTTON_ID}    css=.close
+${COMPANYNAME_INPUT_ID}    company
+${FIRSTNAME_INPUT_ID}    firstName
+${LASTNAME_INPUT_ID}    lastName
+${ADDRESS_INPUT_ID}    address
+${ADDRESS2_INPUT_ID}    address2
+${POSTCODE_INPUT_ID}    postcode
+${TOWNNAME_INPUT_ID}    company
+${COUNTRY_NAME_INPUT_LIST}    country
+${EMAIL_ID_INPUT_ID}    email
+${DAY_PHONE_NO_INPUT_ID}    phoneDay
+${EVE_PHONE_NO_INPUT_ID}    phoneNight
+${SECURITY QUESION_TITLE_INPUT_ID}    223362
+${PAY_BUTTON_XPATH}    xpath=(//button[@ng-click='pay(checkoutForm)'])
+
+*** Keywords ***
+selectDeliveryMethod
+    [Arguments]    ${deliveryMethod}
+    [Documentation]    Choose DHL or Standard delivery
+    Wait Until Element Is Visible    xpath=(//div[1]/div/label[contains(.,'${deliveryMethod}')])    3
+    Click Element    xpath=(//div[1]/div/label[contains(.,'${deliveryMethod}')])
+    log    ${deliveryMethod}
+    Sleep    5s
+
+selectPaymentMethod
+    [Arguments]    ${paymentMethod}
+    [Documentation]    Cash on delivery or Invoice or Klarna Checkout
+    Click Element    xpath=(//div[2]/div/label[contains(.,'${paymentMethod}')])
+    log    ${paymentMethod}
+    Sleep    2s
+
+paymentMethodIsVisible
+    [Arguments]    ${paymentMethod}
+    Element Should Be Visible    xpath=(//div[2]/div/label[contains(.,'${paymentMethod}')])
+
+paymentMethodIsNotVisible
+    [Arguments]    ${paymentMethod}
+    Element Should Not Be Visible    xpath=(//div[2]/div/label[contains(.,'${paymentMethod}')])
+
+paymentMethodIsSelected
+    [Arguments]    ${paymentMethod}
+    Element Should Be Enabled    xpath=(//div[2]/div/label[contains(.,'${paymentMethod}')])
+
+setCompanyName
+    [Arguments]    ${username}
+    Input Text    ${COMPANYNAME_INPUT_ID}    ${username}
+
+setFirstName
+    [Arguments]    ${firstName}
+    Input Text    ${FIRSTNAME_INPUT_ID}    ${firstName}
+
+setLastName
+    [Arguments]    ${lastName}
+    Input Text    ${LASTNAME_INPUT_ID}    ${lastName}
+
+setAddress
+    [Arguments]    ${address}
+    Input Text    ${ADDRESS_INPUT_ID}    ${address}
+
+setAddressContinued
+    [Arguments]    ${address2}
+    Input Text    ${ADDRESS2_INPUT_ID}    ${address2}
+
+setPostCode
+    [Arguments]    ${postCode}
+    Input Text    ${POSTCODE_INPUT_ID}    ${postCode}
+
+setTownName
+    [Arguments]    ${townName}
+    Input Text    ${TOWNNAME_INPUT_ID}    ${townName}
+
+selectCountry
+    [Arguments]    ${countryName}
+    Select From List    ${COUNTRY_NAME_INPUT_LIST}    ${countryName}
+    log    ${countryName}
+
+setEmailAddress
+    [Arguments]    ${emailID}
+    Input Text    ${EMAIL_ID_INPUT_ID}    ${emailID}
+
+setEveningPhoneNumber
+    [Arguments]    ${phoneNight}
+    Input Text    ${EVE_PHONE_NO_INPUT_ID}    ${phoneNight}
+
+setDayPhoneNumber
+    [Arguments]    ${phoneDay}
+    Input Text    ${DAY_PHONE_NO_INPUT_ID}    ${phoneDay}
+
+setWhatsYourTitle
+    [Arguments]    ${titleName}
+    Wait Until Element Is Visible    ${SECURITY QUESION_TITLE_INPUT_ID}    1
+    Input Text    ${SECURITY QUESION_TITLE_INPUT_ID}    ${titleName}
+
+Pay
+    Click Element    ${PAY_BUTTON_XPATH}
+    Set Selenium Implicit Wait    3
+
+applyDiscountCode
+    [Arguments]    ${discountCode}
+    Click Element    xpath=(//button[@ng-click='openDialog()'])
+    Input Text    discountcode    ${discountCode}
+    Click Element    xpath=(//button[@ng-click='sendDiscountCode()'])
+
+goToTopWindow
+    Select Window    null
+
+goToKlarnaFrame
+    Select Frame    klarna-checkout-iframe
+    log    Now at Klarna IFRAME
+    Wait Until Element Is Visible    css=.cui__highlighted-button.fieldset--challenge__continue-button    1

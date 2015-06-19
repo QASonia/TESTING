@@ -1,0 +1,64 @@
+*** Settings ***
+Documentation     'Cartpage' resource file contains list of keywords and variables available from the page. 05th May 2015
+Library           HttpLibrary.HTTP
+Library           OperatingSystem
+Library           String
+Library           BuiltIn
+Library           Selenium2Library
+Resource          ../pageresource/HomePage.txt
+
+*** Variables ***
+${CLOSE_EDITITEM_DIALOG_BUTTON_ID}    css=.close
+${LOGIN_DIALOG_BUTTON_ID}    xpath=(//button[@ng-click='openLoginDialog()'])
+${CHECKOUT_BUTTON_CSS}    css=.btn.btn-primary.btn-block.ladda-button
+${SAVE_ITEM_BUTTON_ID}    xpath=(//button[@type='button'])[9]
+${REMOVE_ITEM_BUTTON_ID}    xpath=(//button[@type='button'])[8]
+${INCREASE_ITEM_QUANTITY_BUTTON_ID}    xpath=(//button[@ng-click='inc()'])
+${DECREASE_ITEM_QUANTITY_BUTTON_ID}    xpath=(//button[@ng-click='dec()'])
+
+*** Keywords ***
+editItem
+    [Arguments]    ${itemName}
+    Click Element    xpath=(//table/tbody/tr[contains(.,'${itemName}')]/td[1])
+
+increaseItemQuantity
+    [Arguments]    ${itemName}
+    editItem    ${itemName}
+    Click Element    ${INCREASE_ITEM_QUANTITY_BUTTON_ID}
+
+decreaseItemQuantity
+    [Arguments]    ${itemName}
+    editItem    ${itemName}
+    Click Element    ${DECREASE_ITEM_QUANTITY_BUTTON_ID}
+
+removeItem
+    [Arguments]    ${itemName}
+    editItem    ${itemName}
+    Click Element    ${REMOVE_ITEM_BUTTON_ID}
+
+saveItem
+    Click Element    ${SAVE_ITEM_BUTTON_ID}
+
+closeEditItemDialog
+    Click Button    ${CLOSE_EDITITEM_DIALOG_BUTTON_ID}
+    Set Selenium Implicit Wait    .2 seconds
+
+selectCountry
+    [Arguments]    ${countryname}
+    Wait Until Element Is Visible	css=.form-control.ng-valid-schema	3
+    Select From List    name=country    ${countryname}
+    log    ${countryname}
+
+selectCustomer
+    [Arguments]    ${customer}
+    GotoMenu
+    Click Element    xpath=(//label/span[contains(text(),'${customer}')])
+    log    ${customer}
+
+goToLoginDialog
+    Click Element    ${LOGIN_DIALOG_BUTTON_ID}
+
+checkout
+    Set Selenium Implicit Wait    3
+    Wait Until Element Is Visible    ${CHECKOUT_BUTTON_CSS}    3
+    Click Element    ${CHECKOUT_BUTTON_CSS}

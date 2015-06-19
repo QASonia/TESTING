@@ -1,0 +1,53 @@
+*** Settings ***
+Documentation     Generic Page contains UI framework initialization(browsers) , test data access and suite setups. 08th May 2015
+Library           HttpLibrary.HTTP
+Library           Collections
+Library           OperatingSystem
+Library           String
+Library           json
+Library           BuiltIn
+Library           Selenium 2 Library    timeout=${SELENIUM_TIMEOUT}    implicit_wait=${SELENIUM_IMPLICIT_WAIT}
+Library           simplejson
+
+*** Variables ***
+${BROWSER}        firefox   # Possibilities for now: ie,firefox,chrome,safari
+${FILE_PATH_INVALID_LOGIN}    ../DiversityWebClientTests/src/com/textalk/test/data/login_invalid_check.json
+${FILE_PATH_INVALID_REGISTRATION}    ../DiversityWebClientTests/src/com/textalk/test/data/registration_invalid_check.json
+${FILE_PATH_VALID_LOGIN}    ../DiversityWebClientTests/src/com/textalk/test/data/login_valid_check.json
+${FILE_PATH_APPROVED_KCO}	../DiversityWebClientTests/src/com/textalk/test/data/approved_kco.json
+${SMOKETESTS_CSV_FILE_PATH}    ..\DiversityWebClientTests\src\com\textalk\test\data\web.csv
+${DELAY}          0
+${SELENIUM_IMPLICIT_WAIT}    2
+${SELENIUM_TIMEOUT}    10
+${HOME_PAGE}      http://qatest.shop.textalk.se/
+${REMOTE_URL}     http://prassana4:x51rXBGQM7ZMC3Xm5S7p@hub.browserstack.com/wd/hub
+${DESIRED_CAPABILITIES}    name:Testing RobotFramework,browser:Firefox, browser_version: 35.0, os: Windows, os_version: 7, resolution: 1024x768 , browserstack.debug:true
+${DESIRED_CAPABILITIES_MOBILE}	   name:Testing on iPhone, platform: MAC, browserName: iPhone, device: iPhone5S, browserstack.debug: true
+*** Keywords ***
+openQaTestShopPage
+    Open Browser    ${HOME_PAGE}    ${BROWSER}    \    #remote_url=${REMOTE_URL}    desired_capabilities=${DESIRED_CAPABILITIES}
+    log    webpage opened
+    Maximize Browser Window
+    Set Selenium Speed    ${DELAY}
+    #Title Should Be    ${HOME_PAGE}
+
+closeBrowser
+    Close All Browsers
+
+ReadJsonFile
+    [Arguments]    ${file_path}
+    [Documentation]    Reading a json file and load it into a list.
+    ${json}    Get file    ${file_path}
+    @{cases}    json.Loads    ${json}
+    SET TEST VARIABLE    @{cases}
+
+pageContainMandatoryFields
+    Page Should Contain Element    xpath=.//*[@required='']
+
+Wait until Input Text For sure
+	[Arguments]  ${locator}  ${text}
+	${TIMEOUT} =    Get Selenium timeout 
+    ${IMPLICIT_WAIT} =    Get Selenium implicit wait
+    Set Selenium Implicit Wait   ${IMPLICIT_WAIT}
+    #Wait Until Keyword Succeeds   ${TIMEOUT}   ${IMPLICIT_WAIT}  Input Text	${locator}  ${text}
+    Input Text	${locator}  ${text}
