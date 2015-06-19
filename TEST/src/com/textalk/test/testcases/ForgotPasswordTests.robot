@@ -12,6 +12,8 @@ Resource          ../pageresource/LoginDialog.txt
 Resource          ../setup/GenericTestAficionado.txt
 Library           ../setup/CSVLibrary.py
 Resource          ../setup/Assertions.txt
+Library           OperatingSystem
+Library           String
 
 *** Variables ***
 ${FORGOT_PASSWORD_LINK_RESPONSE}    Forgot your password? No problem. Enter in your username or email below and we will send you a reset code.

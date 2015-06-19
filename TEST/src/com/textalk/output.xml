@@ -1,0 +1,1198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20150619 18:02:26.907" generator="Robot 2.8.7 (Python 2.7.8 on win32)">
+<suite source="C:\LUNA\Workspace\DiversityWebClientTests\src\com\textalk\test" id="s1" name="Test">
+<suite source="C:\LUNA\Workspace\DiversityWebClientTests\src\com\textalk\test\testcases" id="s1-s1" name="Testcases">
+<suite source="C:\LUNA\Workspace\DiversityWebClientTests\src\com\textalk\test\testcases\ForgotPasswordTests.robot" id="s1-s1-s1" name="ForgotPasswordTests">
+<test id="s1-s1-s1-t1" name="Forgot Password Link Check">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:02:27.984" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>
+<status status="PASS" endtime="20150619 18:02:55.269" starttime="20150619 18:02:27.983"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150619 18:02:55.272" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150619 18:02:55.272" starttime="20150619 18:02:55.271"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:02:55.433" starttime="20150619 18:02:55.274"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:02:55.435" starttime="20150619 18:02:55.434"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:02:55.437" starttime="20150619 18:02:27.980"></status>
+</kw>
+<kw type="kw" name="HomePage.Open Login Dialog">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Click Element">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${LOGIN_DIALOG_LINK_XPATH}</arg>
+</arguments>
+<msg timestamp="20150619 18:02:55.444" level="INFO">Clicking element 'xpath=(//a[@ng-click='openLoginDialog()'])'.</msg>
+<status status="PASS" endtime="20150619 18:02:55.970" starttime="20150619 18:02:55.441"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:02:55.971" starttime="20150619 18:02:55.438"></status>
+</kw>
+<kw type="kw" name="LoginDialog.clickForgotYourPassword">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Click Element">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${FORGOT_YOUR_PASSWORD_LINK}</arg>
+</arguments>
+<msg timestamp="20150619 18:02:55.975" level="INFO">Clicking element 'xpath=(//a[@ng-click='forgot()'])'.</msg>
+<status status="PASS" endtime="20150619 18:02:56.482" starttime="20150619 18:02:55.974"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Implicit Wait">
+<doc>Sets Selenium 2's default implicit wait in seconds and</doc>
+<arguments>
+<arg>.3 seconds</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:02:56.512" starttime="20150619 18:02:56.483"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:02:56.513" starttime="20150619 18:02:55.972"></status>
+</kw>
+<kw type="kw" name="${FailureMsg} = Selenium2Library.Get Text">
+<doc>Returns the text value of element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=(//form/div[1]/div/div[1]/div/p)</arg>
+</arguments>
+<msg timestamp="20150619 18:02:56.586" level="INFO">${FailureMsg} = Forgot your password? No problem. Enter in your username or email below and we will send you a reset code.</msg>
+<status status="PASS" endtime="20150619 18:02:56.585" starttime="20150619 18:02:56.515"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Alert Response From UI: ${FailureMsg}</arg>
+</arguments>
+<msg timestamp="20150619 18:02:56.588" level="INFO">Alert Response From UI: Forgot your password? No problem. Enter in your username or email below and we will send you a reset code.</msg>
+<status status="PASS" endtime="20150619 18:02:56.588" starttime="20150619 18:02:56.587"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal As Strings">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${FailureMsg}</arg>
+<arg>${FORGOT_PASSWORD_LINK_RESPONSE}</arg>
+</arguments>
+<msg timestamp="20150619 18:02:56.590" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20150619 18:02:56.590" starttime="20150619 18:02:56.589"></status>
+</kw>
+<kw type="teardown" name="GenericTestAficionado.closeBrowser">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Close All Browsers">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:02:56.842" starttime="20150619 18:02:56.594"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:02:56.842" starttime="20150619 18:02:56.591"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>C412</tag>
+</tags>
+<status status="PASS" endtime="20150619 18:02:56.842" critical="yes" starttime="20150619 18:02:27.977"></status>
+</test>
+<test id="s1-s1-s1-t2" name="Reset Password With Bad Reset Code">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:02:56.842" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>
+<status status="PASS" endtime="20150619 18:03:17.980" starttime="20150619 18:02:56.842"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150619 18:03:17.983" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150619 18:03:17.983" starttime="20150619 18:03:17.982"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:03:18.127" starttime="20150619 18:03:17.985"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:03:18.129" starttime="20150619 18:03:18.128"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:03:18.130" starttime="20150619 18:02:56.842"></status>
+</kw>
+<kw type="kw" name="${data} = CSVLibrary.Load Test Data From Csv File">
+<doc>Read CSV file and return its content as a Python list.</doc>
+<arguments>
+<arg>${SMOKETESTS_CSV_FILE_PATH}</arg>
+<arg>C414</arg>
+<arg>userName</arg>
+<arg>resetCode</arg>
+<arg>newPassword</arg>
+<arg>retypeNewPassword</arg>
+<arg>responseMessage</arg>
+</arguments>
+<msg timestamp="20150619 18:03:18.132" level="FAIL">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</msg>
+<status status="FAIL" endtime="20150619 18:03:18.133" starttime="20150619 18:03:18.131"></status>
+</kw>
+<kw type="teardown" name="GenericTestAficionado.closeBrowser">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Close All Browsers">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:03:18.375" starttime="20150619 18:03:18.135"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:03:18.375" starttime="20150619 18:03:18.133"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>C414</tag>
+</tags>
+<status status="FAIL" endtime="20150619 18:03:18.375" critical="yes" starttime="20150619 18:02:56.842">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</status>
+</test>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="FAIL" endtime="20150619 18:03:18.375" starttime="20150619 18:02:26.953"></status>
+</suite>
+<suite source="C:\LUNA\Workspace\DiversityWebClientTests\src\com\textalk\test\testcases\KCO.robot" id="s1-s1-s2" name="KCO">
+<test id="s1-s1-s2-t1" name="Approved KCO-SWEDEN">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:03:18.500" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>
+<status status="PASS" endtime="20150619 18:03:35.179" starttime="20150619 18:03:18.500"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150619 18:03:35.181" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150619 18:03:35.181" starttime="20150619 18:03:35.180"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:03:35.294" starttime="20150619 18:03:35.182"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:03:35.296" starttime="20150619 18:03:35.295"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:03:35.297" starttime="20150619 18:03:18.485"></status>
+</kw>
+<kw type="kw" name="${data} = CSVLibrary.Load Test Data From Csv File">
+<doc>Read CSV file and return its content as a Python list.</doc>
+<arguments>
+<arg>${SMOKETESTS_CSV_FILE_PATH}</arg>
+<arg>C416as</arg>
+<arg>promotionItemArticleName</arg>
+<arg>productSize</arg>
+<arg>productColor</arg>
+<arg>countryName</arg>
+<arg>deliveryMethod</arg>
+<arg>paymentMethod</arg>
+<arg>kEmail</arg>
+<arg>kPostCode</arg>
+<arg>kPersonalNumber</arg>
+<arg>responseMessage</arg>
+</arguments>
+<msg timestamp="20150619 18:03:35.300" level="FAIL">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</msg>
+<status status="FAIL" endtime="20150619 18:03:35.300" starttime="20150619 18:03:35.299"></status>
+</kw>
+<kw type="teardown" name="GenericTestAficionado.closeBrowser">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Close All Browsers">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:03:35.526" starttime="20150619 18:03:35.304"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:03:35.526" starttime="20150619 18:03:35.301"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>C416s</tag>
+</tags>
+<status status="FAIL" endtime="20150619 18:03:35.526" critical="yes" starttime="20150619 18:03:18.485">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</status>
+</test>
+<test id="s1-s1-s2-t2" name="Approved KCO-FINLAND">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:03:35.526" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>
+<status status="PASS" endtime="20150619 18:03:52.054" starttime="20150619 18:03:35.526"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150619 18:03:52.056" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150619 18:03:52.056" starttime="20150619 18:03:52.055"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:03:52.817" starttime="20150619 18:03:52.057"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:03:52.820" starttime="20150619 18:03:52.818"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:03:52.821" starttime="20150619 18:03:35.526"></status>
+</kw>
+<kw type="kw" name="${data} = CSVLibrary.Load Test Data From Csv File">
+<doc>Read CSV file and return its content as a Python list.</doc>
+<arguments>
+<arg>${SMOKETESTS_CSV_FILE_PATH}</arg>
+<arg>C416af</arg>
+<arg>promotionItemArticleName</arg>
+<arg>productSize</arg>
+<arg>productColor</arg>
+<arg>countryName</arg>
+<arg>deliveryMethod</arg>
+<arg>paymentMethod</arg>
+<arg>kEmail</arg>
+<arg>kPostCode</arg>
+<arg>responseMessage</arg>
+</arguments>
+<msg timestamp="20150619 18:03:52.826" level="FAIL">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</msg>
+<status status="FAIL" endtime="20150619 18:03:52.827" starttime="20150619 18:03:52.823"></status>
+</kw>
+<kw type="teardown" name="GenericTestAficionado.closeBrowser">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Close All Browsers">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:03:53.077" starttime="20150619 18:03:52.834"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:03:53.078" starttime="20150619 18:03:52.829"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>C416f</tag>
+</tags>
+<status status="FAIL" endtime="20150619 18:03:53.079" critical="yes" starttime="20150619 18:03:35.526">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</status>
+</test>
+<test id="s1-s1-s2-t3" name="Approved KCO-NORWAY">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:03:53.084" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>
+<status status="PASS" endtime="20150619 18:04:08.747" starttime="20150619 18:03:53.084"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150619 18:04:08.749" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150619 18:04:08.750" starttime="20150619 18:04:08.748"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:04:09.453" starttime="20150619 18:04:08.751"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:04:09.456" starttime="20150619 18:04:09.455"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:04:09.458" starttime="20150619 18:03:53.084"></status>
+</kw>
+<kw type="kw" name="${data} = CSVLibrary.Load Test Data From Csv File">
+<doc>Read CSV file and return its content as a Python list.</doc>
+<arguments>
+<arg>${SMOKETESTS_CSV_FILE_PATH}</arg>
+<arg>C416an</arg>
+<arg>promotionItemArticleName</arg>
+<arg>productSize</arg>
+<arg>productColor</arg>
+<arg>countryName</arg>
+<arg>deliveryMethod</arg>
+<arg>paymentMethod</arg>
+<arg>kEmail</arg>
+<arg>kPostCode</arg>
+<arg>responseMessage</arg>
+</arguments>
+<msg timestamp="20150619 18:04:09.466" level="FAIL">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</msg>
+<status status="FAIL" endtime="20150619 18:04:09.469" starttime="20150619 18:04:09.459"></status>
+</kw>
+<kw type="teardown" name="GenericTestAficionado.closeBrowser">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Close All Browsers">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:04:09.716" starttime="20150619 18:04:09.475"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:04:09.716" starttime="20150619 18:04:09.472"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>C416n</tag>
+</tags>
+<status status="FAIL" endtime="20150619 18:04:09.716" critical="yes" starttime="20150619 18:03:53.083">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</status>
+</test>
+<test id="s1-s1-s2-t4" name="Denied KCO-SWEDEN">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:04:09.731" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>
+<status status="PASS" endtime="20150619 18:04:25.190" starttime="20150619 18:04:09.731"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150619 18:04:25.192" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150619 18:04:25.193" starttime="20150619 18:04:25.191"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:04:25.907" starttime="20150619 18:04:25.194"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:04:25.910" starttime="20150619 18:04:25.909"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:04:25.912" starttime="20150619 18:04:09.716"></status>
+</kw>
+<kw type="kw" name="${data} = CSVLibrary.Load Test Data From Csv File">
+<doc>Read CSV file and return its content as a Python list.</doc>
+<arguments>
+<arg>${SMOKETESTS_CSV_FILE_PATH}</arg>
+<arg>C416ds</arg>
+<arg>promotionItemArticleName</arg>
+<arg>productSize</arg>
+<arg>productColor</arg>
+<arg>countryName</arg>
+<arg>deliveryMethod</arg>
+<arg>paymentMethod</arg>
+<arg>kEmail</arg>
+<arg>kPostCode</arg>
+<arg>kFirstName</arg>
+<arg>kLastName</arg>
+<arg>kAddress</arg>
+<arg>kcity</arg>
+<arg>kPhoneNumber</arg>
+<arg>kPersonalNumber</arg>
+<arg>responseMessage</arg>
+</arguments>
+<msg timestamp="20150619 18:04:25.917" level="FAIL">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</msg>
+<status status="FAIL" endtime="20150619 18:04:25.919" starttime="20150619 18:04:25.913"></status>
+</kw>
+<kw type="teardown" name="GenericTestAficionado.closeBrowser">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Close All Browsers">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:04:26.236" starttime="20150619 18:04:25.929"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:04:26.237" starttime="20150619 18:04:25.925"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>C416s</tag>
+</tags>
+<status status="FAIL" endtime="20150619 18:04:26.238" critical="yes" starttime="20150619 18:04:09.716">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</status>
+</test>
+<test id="s1-s1-s2-t5" name="Denied KCO-FINLAND">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:04:26.246" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>
+<status status="PASS" endtime="20150619 18:04:41.054" starttime="20150619 18:04:26.245"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150619 18:04:41.057" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150619 18:04:41.057" starttime="20150619 18:04:41.055"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:04:41.747" starttime="20150619 18:04:41.058"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:04:41.750" starttime="20150619 18:04:41.749"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:04:41.751" starttime="20150619 18:04:26.243"></status>
+</kw>
+<kw type="kw" name="${data} = CSVLibrary.Load Test Data From Csv File">
+<doc>Read CSV file and return its content as a Python list.</doc>
+<arguments>
+<arg>${SMOKETESTS_CSV_FILE_PATH}</arg>
+<arg>C416f</arg>
+<arg>promotionItemArticleName</arg>
+<arg>productSize</arg>
+<arg>productColor</arg>
+<arg>countryName</arg>
+<arg>deliveryMethod</arg>
+<arg>paymentMethod</arg>
+<arg>kEmail</arg>
+<arg>kPostCode</arg>
+<arg>kFirstName</arg>
+<arg>kLastName</arg>
+<arg>kAddress</arg>
+<arg>kPhoneNumber</arg>
+<arg>kPersonalNumber</arg>
+<arg>responseMessage</arg>
+</arguments>
+<msg timestamp="20150619 18:04:41.757" level="FAIL">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</msg>
+<status status="FAIL" endtime="20150619 18:04:41.758" starttime="20150619 18:04:41.753"></status>
+</kw>
+<kw type="teardown" name="GenericTestAficionado.closeBrowser">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Close All Browsers">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:04:42.012" starttime="20150619 18:04:41.770"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:04:42.013" starttime="20150619 18:04:41.766"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>C416f</tag>
+</tags>
+<status status="FAIL" endtime="20150619 18:04:42.018" critical="yes" starttime="20150619 18:04:26.240">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</status>
+</test>
+<test id="s1-s1-s2-t6" name="Denied KCO-NORWAY">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:04:42.018" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>
+<status status="PASS" endtime="20150619 18:04:59.116" starttime="20150619 18:04:42.018"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150619 18:04:59.119" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150619 18:04:59.119" starttime="20150619 18:04:59.118"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:04:59.295" starttime="20150619 18:04:59.121"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:04:59.297" starttime="20150619 18:04:59.296"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:04:59.297" starttime="20150619 18:04:42.018"></status>
+</kw>
+<kw type="kw" name="${data} = CSVLibrary.Load Test Data From Csv File">
+<doc>Read CSV file and return its content as a Python list.</doc>
+<arguments>
+<arg>${SMOKETESTS_CSV_FILE_PATH}</arg>
+<arg>C416n</arg>
+<arg>promotionItemArticleName</arg>
+<arg>productSize</arg>
+<arg>productColor</arg>
+<arg>countryName</arg>
+<arg>deliveryMethod</arg>
+<arg>paymentMethod</arg>
+<arg>kEmail</arg>
+<arg>kPostCode</arg>
+<arg>kFirstName</arg>
+<arg>kLastName</arg>
+<arg>kCareOfName</arg>
+<arg>kAddress</arg>
+<arg>kPhoneNumber</arg>
+<arg>kPersonalNumber</arg>
+<arg>responseMessage</arg>
+</arguments>
+<msg timestamp="20150619 18:04:59.300" level="FAIL">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</msg>
+<status status="FAIL" endtime="20150619 18:04:59.301" starttime="20150619 18:04:59.298"></status>
+</kw>
+<kw type="teardown" name="GenericTestAficionado.closeBrowser">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Close All Browsers">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:04:59.517" starttime="20150619 18:04:59.304"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:04:59.517" starttime="20150619 18:04:59.302"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>C416g</tag>
+</tags>
+<status status="FAIL" endtime="20150619 18:04:59.517" critical="yes" starttime="20150619 18:04:42.018">IOError: [Errno 22] invalid mode ('r') or filename: u'../DiversityWebClientTestssrccom\textalk\testdataweb.csv'</status>
+</test>
+<test id="s1-s1-s2-t7" name="KCO PAYMENT VISIBLE FOR AVAILABLE COUNTRIES">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:04:59.532" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>
+<status status="PASS" endtime="20150619 18:05:15.544" starttime="20150619 18:04:59.532"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150619 18:05:15.546" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150619 18:05:15.546" starttime="20150619 18:05:15.545"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:05:15.653" starttime="20150619 18:05:15.547"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:05:15.655" starttime="20150619 18:05:15.654"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:05:15.656" starttime="20150619 18:04:59.517"></status>
+</kw>
+<kw type="kw" name="HomePage.GotoDemoFavourites">
+<doc></doc>
+<arguments>
+<arg>Nam eu nulla</arg>
+</arguments>
+<kw type="kw" name="Selenium2Library.Wait Until Element Is Visible">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>xpath=(//h5/a[contains(text(),'${demoFavArticleName}')])</arg>
+<arg>2</arg>
+</arguments>
+<kw type="kw" name="Selenium2Library.Capture Page Screenshot">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+</arguments>
+<msg timestamp="20150619 18:05:24.307" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20150619 18:05:24.307" starttime="20150619 18:05:18.753"></status>
+</kw>
+<msg timestamp="20150619 18:05:24.308" level="FAIL">Element locator 'xpath=(//h5/a[contains(text(),'Nam eu nulla')])' did not match any elements after 2 seconds</msg>
+<status status="FAIL" endtime="20150619 18:05:24.309" starttime="20150619 18:05:15.660"></status>
+</kw>
+<status status="FAIL" endtime="20150619 18:05:24.310" starttime="20150619 18:05:15.658"></status>
+</kw>
+<kw type="teardown" name="GenericTestAficionado.closeBrowser">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Close All Browsers">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:05:25.191" starttime="20150619 18:05:24.315"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:05:25.193" starttime="20150619 18:05:24.310"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>C417</tag>
+</tags>
+<status status="FAIL" endtime="20150619 18:05:25.194" critical="yes" starttime="20150619 18:04:59.517">Element locator 'xpath=(//h5/a[contains(text(),'Nam eu nulla')])' did not match any elements after 2 seconds</status>
+</test>
+<test id="s1-s1-s2-t8" name="KCO PAYMENT NOT SHOWN FOR QUANTITY WITH DECIMAL VALUE">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:05:25.211" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>
+<status status="PASS" endtime="20150619 18:05:53.845" starttime="20150619 18:05:25.210"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150619 18:05:53.847" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150619 18:05:53.847" starttime="20150619 18:05:53.846"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:05:54.565" starttime="20150619 18:05:53.848"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:05:54.568" starttime="20150619 18:05:54.567"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:05:54.570" starttime="20150619 18:05:25.207"></status>
+</kw>
+<kw type="kw" name="HomePage.GotoDemoFavourites">
+<doc></doc>
+<arguments>
+<arg>Baby Cap</arg>
+</arguments>
+<kw type="kw" name="Selenium2Library.Wait Until Element Is Visible">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>xpath=(//h5/a[contains(text(),'${demoFavArticleName}')])</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:05:59.175" starttime="20150619 18:05:54.579"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Click Element">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=(//h5/a[contains(text(),'${demoFavArticleName}')])</arg>
+</arguments>
+<msg timestamp="20150619 18:05:59.177" level="INFO">Clicking element 'xpath=(//h5/a[contains(text(),'Baby Cap')])'.</msg>
+<status status="PASS" endtime="20150619 18:05:59.528" starttime="20150619 18:05:59.177"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${demoFavArticleName}</arg>
+</arguments>
+<msg timestamp="20150619 18:05:59.531" level="INFO">Baby Cap</msg>
+<status status="PASS" endtime="20150619 18:05:59.531" starttime="20150619 18:05:59.530"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:05:59.531" starttime="20150619 18:05:54.572"></status>
+</kw>
+<kw type="kw" name="ArticlePage.IncreaseQuantity">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Wait Until Element Is Visible">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>${INCREASE_ITEM_QUANTITY_BUTTON_ID}</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:06:03.100" starttime="20150619 18:05:59.535"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Click Element">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${INCREASE_ITEM_QUANTITY_BUTTON_ID}</arg>
+</arguments>
+<msg timestamp="20150619 18:06:03.102" level="INFO">Clicking element 'xpath=(//button[@ng-click='inc()'])'.</msg>
+<status status="PASS" endtime="20150619 18:06:03.273" starttime="20150619 18:06:03.101"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:06:03.274" starttime="20150619 18:05:59.533"></status>
+</kw>
+<kw type="kw" name="ArticlePage.AddToCart">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Wait Until Element Is Visible">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>${DECREASE_ITEM_QUANTITY_BUTTON_ID}</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:06:03.321" starttime="20150619 18:06:03.278"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Click Element">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${ADDTOCART}</arg>
+</arguments>
+<msg timestamp="20150619 18:06:03.323" level="INFO">Clicking element 'xpath=(//button[@ng-click='buy(articleChoices)'])'.</msg>
+<status status="PASS" endtime="20150619 18:06:05.204" starttime="20150619 18:06:03.322"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:06:05.205" starttime="20150619 18:06:03.275"></status>
+</kw>
+<kw type="kw" name="ArticlePage.Proceed To Checkout">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Wait Until Element Is Visible">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>xpath=(//a[@class='btn btn-primary ng-binding'])</arg>
+<arg>3</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:06:05.712" starttime="20150619 18:06:05.208"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Click Element">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=(//a[@class='btn btn-primary ng-binding'])</arg>
+</arguments>
+<msg timestamp="20150619 18:06:05.714" level="INFO">Clicking element 'xpath=(//a[@class='btn btn-primary ng-binding'])'.</msg>
+<status status="PASS" endtime="20150619 18:06:06.128" starttime="20150619 18:06:05.713"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:06:06.129" starttime="20150619 18:06:05.206"></status>
+</kw>
+<kw type="kw" name="CartPage.selectCountry">
+<doc></doc>
+<arguments>
+<arg>Sweden</arg>
+</arguments>
+<kw type="kw" name="Selenium2Library.Wait Until Element Is Visible">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>css=.form-control.ng-valid-schema</arg>
+<arg>3</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:06:09.888" starttime="20150619 18:06:06.133"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Select From List">
+<doc>Selects `*items` from list identified by `locator`</doc>
+<arguments>
+<arg>name=country</arg>
+<arg>${countryname}</arg>
+</arguments>
+<msg timestamp="20150619 18:06:09.891" level="INFO">Selecting option(s) 'Sweden' from list 'name=country'.</msg>
+<status status="PASS" endtime="20150619 18:06:10.422" starttime="20150619 18:06:09.889"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${countryname}</arg>
+</arguments>
+<msg timestamp="20150619 18:06:10.426" level="INFO">Sweden</msg>
+<status status="PASS" endtime="20150619 18:06:10.426" starttime="20150619 18:06:10.425"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:06:10.426" starttime="20150619 18:06:06.130"></status>
+</kw>
+<kw type="kw" name="CartPage.checkout">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Set Selenium Implicit Wait">
+<doc>Sets Selenium 2's default implicit wait in seconds and</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:06:10.457" starttime="20150619 18:06:10.431"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Wait Until Element Is Visible">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>${CHECKOUT_BUTTON_CSS}</arg>
+<arg>3</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:06:10.515" starttime="20150619 18:06:10.458"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Click Element">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${CHECKOUT_BUTTON_CSS}</arg>
+</arguments>
+<msg timestamp="20150619 18:06:10.520" level="INFO">Clicking element 'css=.btn.btn-primary.btn-block.ladda-button'.</msg>
+<status status="PASS" endtime="20150619 18:06:10.776" starttime="20150619 18:06:10.518"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:06:10.777" starttime="20150619 18:06:10.428"></status>
+</kw>
+<kw type="kw" name="CashPage.paymentMethodIsNotVisible">
+<doc></doc>
+<arguments>
+<arg>Klarna Checkout</arg>
+</arguments>
+<kw type="kw" name="Selenium2Library.Element Should Not Be Visible">
+<doc>Verifies that the element identified by `locator` is NOT visible.</doc>
+<arguments>
+<arg>xpath=(//div[2]/div/label[contains(.,'${paymentMethod}')])</arg>
+</arguments>
+<msg timestamp="20150619 18:06:10.781" level="INFO">Verifying element 'xpath=(//div[2]/div/label[contains(.,'Klarna Checkout')])' is not visible.</msg>
+<status status="PASS" endtime="20150619 18:06:15.271" starttime="20150619 18:06:10.780"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:06:15.272" starttime="20150619 18:06:10.778"></status>
+</kw>
+<kw type="teardown" name="GenericTestAficionado.closeBrowser">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Close All Browsers">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:06:15.594" starttime="20150619 18:06:15.277"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:06:15.595" starttime="20150619 18:06:15.274"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>C419</tag>
+</tags>
+<status status="PASS" endtime="20150619 18:06:15.597" critical="yes" starttime="20150619 18:05:25.201"></status>
+</test>
+<test id="s1-s1-s2-t9" name="DUMMY">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:06:15.605" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>
+<status status="PASS" endtime="20150619 18:06:32.992" starttime="20150619 18:06:15.605"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150619 18:06:32.994" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150619 18:06:32.994" starttime="20150619 18:06:32.993"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:06:33.097" starttime="20150619 18:06:32.995"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:06:33.099" starttime="20150619 18:06:33.098"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:06:33.099" starttime="20150619 18:06:15.602"></status>
+</kw>
+<kw type="kw" name="${data} = CSVLibrary.Load Test Data From Csv File">
+<doc>Read CSV file and return its content as a Python list.</doc>
+<arguments>
+<arg>../DiversityWebClientTests/src/com/textalk/test/data/web1.csv</arg>
+<arg>C416an</arg>
+<arg>responseMessage</arg>
+</arguments>
+<msg timestamp="20150619 18:06:33.102" level="FAIL">IOError: [Errno 2] No such file or directory: u'../DiversityWebClientTests/src/com/textalk/test/data/web1.csv'</msg>
+<status status="FAIL" endtime="20150619 18:06:33.103" starttime="20150619 18:06:33.101"></status>
+</kw>
+<kw type="teardown" name="GenericTestAficionado.closeBrowser">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Close All Browsers">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:06:33.365" starttime="20150619 18:06:33.106"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:06:33.365" starttime="20150619 18:06:33.104"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>C417</tag>
+</tags>
+<status status="FAIL" endtime="20150619 18:06:33.365" critical="yes" starttime="20150619 18:06:15.600">IOError: [Errno 2] No such file or directory: u'../DiversityWebClientTests/src/com/textalk/test/data/web1.csv'</status>
+</test>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="FAIL" endtime="20150619 18:06:33.380" starttime="20150619 18:03:18.391"></status>
+</suite>
+<suite source="C:\LUNA\Workspace\DiversityWebClientTests\src\com\textalk\test\testcases\LoginTests.robot" id="s1-s1-s3" name="LoginTests">
+<test id="s1-s1-s3-t1" name="UI Login With Valid Credentials">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:06:33.491" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>
+<status status="PASS" endtime="20150619 18:06:50.769" starttime="20150619 18:06:33.476"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150619 18:06:50.772" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150619 18:06:50.772" starttime="20150619 18:06:50.770"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:06:50.941" starttime="20150619 18:06:50.773"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:06:50.944" starttime="20150619 18:06:50.942"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:06:50.946" starttime="20150619 18:06:33.476"></status>
+</kw>
+<kw type="kw" name="GenericTestAficionado.ReadJsonFile">
+<doc>Reading a json file and load it into a list.</doc>
+<arguments>
+<arg>${FILE_PATH_VALID_LOGIN}</arg>
+</arguments>
+<kw type="kw" name="${json} = OperatingSystem.Get File">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>${file_path}</arg>
+</arguments>
+<msg timestamp="20150619 18:06:50.951" html="yes" level="INFO">Getting file '&lt;a href="file://C:\LUNA\Workspace\DiversityWebClientTests\src\com\DiversityWebClientTests\src\com\textalk\test\data\login_valid_check.json"&gt;C:\LUNA\Workspace\DiversityWebClientTests\src\com\DiversityWebClientTests\src\com\textalk\test\data\login_valid_check.json&lt;/a&gt;'</msg>
+<msg timestamp="20150619 18:06:51.203" level="FAIL">IOError: [Errno 2] No such file or directory: u'C:\\LUNA\\Workspace\\DiversityWebClientTests\\src\\com\\DiversityWebClientTests\\src\\com\\textalk\\test\\data\\login_valid_check.json'</msg>
+<status status="FAIL" endtime="20150619 18:06:51.203" starttime="20150619 18:06:50.949"></status>
+</kw>
+<status status="FAIL" endtime="20150619 18:06:51.204" starttime="20150619 18:06:50.947"></status>
+</kw>
+<kw type="teardown" name="GenericTestAficionado.closeBrowser">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Close All Browsers">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:06:51.717" starttime="20150619 18:06:51.210"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:06:51.718" starttime="20150619 18:06:51.206"></status>
+</kw>
+<doc>Tests to verify whether the user can be able to login to the accounts successfully.</doc>
+<tags>
+<tag>C401</tag>
+</tags>
+<status status="FAIL" endtime="20150619 18:06:51.720" critical="yes" starttime="20150619 18:06:33.476">IOError: [Errno 2] No such file or directory: u'C:\\LUNA\\Workspace\\DiversityWebClientTests\\src\\com\\DiversityWebClientTests\\src\\com\\textalk\\test\\data\\login_valid_check.json'</status>
+</test>
+<test id="s1-s1-s3-t2" name="UI Login with Invalid Credentials">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:06:51.736" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>
+<status status="PASS" endtime="20150619 18:07:27.569" starttime="20150619 18:06:51.734"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>webpage opened</arg>
+</arguments>
+<msg timestamp="20150619 18:07:27.572" level="INFO">webpage opened</msg>
+<status status="PASS" endtime="20150619 18:07:27.572" starttime="20150619 18:07:27.571"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:07:27.688" starttime="20150619 18:07:27.573"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20150619 18:07:27.690" starttime="20150619 18:07:27.689"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:07:27.691" starttime="20150619 18:06:51.729"></status>
+</kw>
+<kw type="kw" name="GenericTestAficionado.ReadJsonFile">
+<doc>Reading a json file and load it into a list.</doc>
+<arguments>
+<arg>${FILE_PATH_INVALID_LOGIN}</arg>
+</arguments>
+<kw type="kw" name="${json} = OperatingSystem.Get File">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>${file_path}</arg>
+</arguments>
+<msg timestamp="20150619 18:07:27.697" html="yes" level="INFO">Getting file '&lt;a href="file://C:\LUNA\Workspace\DiversityWebClientTests\src\com\DiversityWebClientTests\src\com\textalk\test\data\login_invalid_check.json"&gt;C:\LUNA\Workspace\DiversityWebClientTests\src\com\DiversityWebClientTests\src\com\textalk\test\data\login_invalid_check.json&lt;/a&gt;'</msg>
+<msg timestamp="20150619 18:07:27.699" level="FAIL">IOError: [Errno 2] No such file or directory: u'C:\\LUNA\\Workspace\\DiversityWebClientTests\\src\\com\\DiversityWebClientTests\\src\\com\\textalk\\test\\data\\login_invalid_check.json'</msg>
+<status status="FAIL" endtime="20150619 18:07:27.703" starttime="20150619 18:07:27.695"></status>
+</kw>
+<status status="FAIL" endtime="20150619 18:07:27.704" starttime="20150619 18:07:27.693"></status>
+</kw>
+<kw type="teardown" name="GenericTestAficionado.closeBrowser">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Close All Browsers">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20150619 18:07:29.252" starttime="20150619 18:07:27.710"></status>
+</kw>
+<status status="PASS" endtime="20150619 18:07:29.253" starttime="20150619 18:07:27.705"></status>
+</kw>
+<doc>Tests to verify whether the user gets proper error response message during logging into the system.</doc>
+<tags>
+<tag>C402</tag>
+</tags>
+<status status="FAIL" endtime="20150619 18:07:29.255" critical="yes" starttime="20150619 18:06:51.724">IOError: [Errno 2] No such file or directory: u'C:\\LUNA\\Workspace\\DiversityWebClientTests\\src\\com\\DiversityWebClientTests\\src\\com\\textalk\\test\\data\\login_invalid_check.json'</status>
+</test>
+<test id="s1-s1-s3-t3" name="Validate Login Using Browser Back Button">
+<kw type="setup" name="GenericTestAficionado.openQaTestShopPage">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${HOME_PAGE}</arg>
+<arg>${BROWSER}</arg>
+<arg></arg>
+</arguments>
+<msg timestamp="20150619 18:07:29.352" level="INFO">Opening browser 'firefox' to base url 'http://qatest.shop.textalk.se/'</msg>

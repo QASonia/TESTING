@@ -17,6 +17,8 @@ Resource          ../setup/GenericTestAficionado.txt
 Resource          ../setup/Assertions.txt    # DiversityWebClientTests/src/com/textalk/test/setup/Assertions.txt
 Library           json
 Library           ../setup/CSVLibrary.py
+Library           OperatingSystem
+Library           String
 
 *** Variables ***
 

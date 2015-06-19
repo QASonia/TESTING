@@ -5,6 +5,8 @@ Library           Selenium2Library
 Library           OperatingSystem
 Library           String
 Library           Collections
+Library           OperatingSystem
+Library           String
 
 *** Variables ***
 ${REMOTE_URL}     http://prassana4:x51rXBGQM7ZMC3Xm5S7p@hub.browserstack.com/wd/hub
